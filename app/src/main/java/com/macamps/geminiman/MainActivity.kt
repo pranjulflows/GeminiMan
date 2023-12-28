@@ -27,6 +27,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.macamps.geminiman.ui.theme.GeminiManTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,13 +64,24 @@ fun GeminiChat(padding: PaddingValues) {
     Column(
         modifier = Modifier
     ) {
+        LazyColumn() {
+            items(count = 100) {
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .background(color = Color.Cyan)
-        )
+                val color =
+                    Color(
+                        Random.nextInt(256),
+                        Random.nextInt(256),
+                        Random.nextInt(256),
+                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(100.dp)
+                        .background(color = color)
+                )
+            }
+        }
+
         Box(
             modifier = Modifier
                 .fillMaxWidth()
